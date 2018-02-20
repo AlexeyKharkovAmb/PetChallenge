@@ -15,27 +15,27 @@ namespace PetChallenge.BusLogic
             }
 
             //deserialize object and fetch records containing people with Cats only (we dont need people without pets or without cats)
-            var people = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<Person>>(json).Where(person => person.pets != null && person.pets.Any(pet => pet.type == "Cat"));
+            var people = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<List<Person>>(json).Where(person => person.Pets != null && person.Pets.Any(pet => pet.Type == "Cat"));
 
             var genderModel = new GenderViewModel();
 
             //fill view model
             foreach (var person in people)
             {
-                foreach (var pet in person.pets)
+                foreach (var pet in person.Pets)
                 {
-                    if (pet.type == "Cat")
+                    if (pet.Type == "Cat")
                     {
-                        if (person.gender == "Male")
+                        if (person.Gender == "Male")
                         {
-                            genderModel.Males.Add(pet.name);
+                            genderModel.Males.Add(pet.Name);
                         }
                         else
                         {
                             //assume nothing. if gender is not Male it does not mean its Female
-                            if (person.gender == "Female")
+                            if (person.Gender == "Female")
                             {
-                                genderModel.Females.Add(pet.name);
+                                genderModel.Females.Add(pet.Name);
                             }
                         }
                     }

@@ -4,9 +4,9 @@ namespace PetChallenge.Models
 {
     public class Person
     {
-        public string name { get; set; }
-        public string gender { get; set; }
-        public string age { get; set; }
-        public List<Pet> pets { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public string Age { get; set; }
+        public List<Pet> Pets { get; set; }
     }
 }
