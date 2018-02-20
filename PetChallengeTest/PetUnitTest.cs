@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PetChallenge.BusLogic;
 using System.Collections.Generic;
 
@@ -18,7 +17,7 @@ namespace PetChallengeTest
             var expectedMaleCats = 1;
             var actualMaleCats = genders.Males.Count;
            
-            Assert.AreEqual(expectedMaleCats, actualMaleCats, 0.000, "Wrong number of male cats");
+            Assert.AreEqual(expectedMaleCats, actualMaleCats, 0, "Wrong number of male cats");
         }
 
         [TestMethod]
@@ -31,7 +30,7 @@ namespace PetChallengeTest
             var expectedFemaleCats = 2;
             var actualFemaleCats = genders.Females.Count;
 
-            Assert.AreEqual(expectedFemaleCats, actualFemaleCats, 0.000, "Wrong number of male cats");
+            Assert.AreEqual(expectedFemaleCats, actualFemaleCats, 0, "Wrong number of male cats");
         }
 
         [TestMethod]
