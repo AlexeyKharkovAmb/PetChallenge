@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Cats</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div ng-app="petApp" ng-controller="petCtrl">
+            <h4 ng-if="data.Males">Male</h4>
+            <ul class="list-group" ng-repeat="pet in data.Males">
+                <li class="list-group-item">{{ pet }}</li>
+            </ul>
+            <br ng-if="data.Males"/>
+            <h4 ng-if="data.Females">Female</h4>
+            <ul class="list-group" ng-repeat="pet in data.Females">
+                <li class="list-group-item">{{ pet }}</li>
+            </ul>
+            <br ng-if="data.Females"/>  
+            <div class="alert alert-danger" role="alert" ng-if="error">{{ error }}</div>
+        </div>              
+    </div>
+
+    <script>
+        var app = angular.module('petApp', []);
+        app.controller('petCtrl', function ($http, $scope) {
+            $scope.error = null;
+
+            $http.get("/api/cats/get")
+                .then(function (response) {
+                    $scope.data = response.data;
+                }, function (response) {
+                    $scope.error = response.data.Message;
+                });
+        });
+    </script>
+</body>
+</html>
